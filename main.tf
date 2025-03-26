@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "jenkins-terraform" {
-  bucket = "my-tf-test-bucket"
+  bucket = "jenkins-terraform"
 
   tags = {
     Name        = "jenkins-terraform bucket"
