@@ -5,7 +5,7 @@ pipeline{
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
     }
     stages{
-        stage('Checkout'){
+        stage('Checkoutt'){
             steps{
                 git branch: 'main', url: 'https://github.com/SB-AWSDevops/terraform-jenkins'
             }
