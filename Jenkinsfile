@@ -2,34 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Check AWS Credentials') {
             steps {
-                checkout scm
-            }
-        }
-
-        stage('Terraform Init') {
-            steps {
-                sh 'terraform init'
-            }
-        }
-
-        stage('Terraform Plan') {
-            steps {
-                sh 'terraform plan -out=tfplan'
-            }
-        }
-
-        stage('Manual Approval') {
-            steps {
-                input message: 'Proceed with Terraform Apply?', ok: 'Yes, Apply!'
-            }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                sh 'terraform apply -auto-approve tfplan'
-                echo "terrform sucess"
+                script {
+                    sh 'echo "AWS Credentials from Instance Metadata Service:"'
+                    sh 'curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/'
+                    sh 'curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/EC2-S3-ACCESS'
+                }
             }
         }
     }
