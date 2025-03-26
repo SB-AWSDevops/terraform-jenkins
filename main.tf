@@ -9,14 +9,14 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "eu-central-1"
+  region = "us-east-1"
 }
 
 resource "aws_s3_bucket" "jenkins-terraform" {
-  bucket = "suri-jenkins-terraform"
+  bucket = "bunny-jenkins-terraform"
 
   tags = {
-    Name        = "jenkins-terraform bucket"
+    Name        = "suri-jenkins-terraform bucket"
     Environment = "Dev"
   }
 }
